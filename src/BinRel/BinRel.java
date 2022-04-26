@@ -4,19 +4,21 @@ import java.util.Set;
 
 public class BinRel<T> {
 	
-	private boolean isSymmetric = false;
+	public int uncoupled;
 	public Set<Pair<T>> relation = new HashSet<>();
 	
+	
 	public void addPair(T first, T second) {
-		relation.add(new Pair<>(first, second));
-		if(isSymmetric() && !relation.contains(new Pair<>(second, first)))
-			isSymmetric = false;
-		if(relation.contains(new Pair<>(second, first)))
-			isSymmetric = true;
+		relation.add(new Pair<T>(first, second));
+		uncoupled++;
+		Pair<T> temp = new Pair<>(second, first);
+		
+		if(relation.contains(temp)) uncoupled-=2;
+		
 	}
 	
 	public boolean isSymmetric() {
-		return isSymmetric;
+		return uncoupled == 0;
 	}
 	
 	public boolean areRelated(T first, T second) {
@@ -26,7 +28,7 @@ public class BinRel<T> {
 	@Override
 	public String toString() {
 		String result = "";
-		for(Pair p : relation) {
+		for(Pair<T> p : relation) {
 			result += p.toString();
 		}
 		return result;

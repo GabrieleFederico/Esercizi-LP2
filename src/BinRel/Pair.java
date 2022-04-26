@@ -24,7 +24,7 @@ public class Pair<T> {
 			return false;
 		if(o.getClass() != getClass())
 			return false;
-		Pair p = (Pair)o;
+		Pair<T> p = (Pair<T>)o;
 		return ((first == p.first()) && (second == p.second()));
 	}
 	
@@ -35,6 +35,6 @@ public class Pair<T> {
 	
 	@Override
 	public int hashCode() {
-		return 
+		return first.hashCode() ^ second.hashCode();
 	}
 }
