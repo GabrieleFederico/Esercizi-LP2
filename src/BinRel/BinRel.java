@@ -9,8 +9,8 @@ public class BinRel<T> {
 	
 	
 	public void addPair(T first, T second) {
-		relation.add(new Pair<T>(first, second));
-		uncoupled++;
+		if(relation.add(new Pair<T>(first, second)))
+			uncoupled++;
 		Pair<T> temp = new Pair<>(second, first);
 		
 		if(relation.contains(temp)) uncoupled-=2;
