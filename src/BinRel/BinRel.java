@@ -4,8 +4,8 @@ import java.util.Set;
 
 public class BinRel<T> {
 	
-	public int uncoupled;
-	public Set<Pair<T>> relation = new HashSet<>();
+	private int uncoupled;
+	private Set<Pair<T>> relation = new HashSet<>();
 	
 	
 	public void addPair(T first, T second) {
