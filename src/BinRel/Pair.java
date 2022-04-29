@@ -22,7 +22,7 @@ public class Pair<T> {
 	public boolean equals(Object o) {
 		if(o == null)
 			return false;
-		if(o.getClass() != getClass())
+		if(o.getClass() != Pair.class)
 			return false;
 		Pair<T> p = (Pair<T>)o;
 		return ((first == p.first()) && (second == p.second()));
